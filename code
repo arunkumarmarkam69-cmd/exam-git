@@ -1,0 +1,17 @@
+paused = False
+
+def pause_game():
+    nonlocal paused
+    while paused:
+        screen.fill(black)
+        text = font.render("Paused - Press P to Resume", True, yellow)
+        screen.blit(text, [width / 4, height / 2])
+        pygame.display.update()
+
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_p:
+                    paused = False
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
